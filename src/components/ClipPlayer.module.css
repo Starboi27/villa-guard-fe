@@ -1,0 +1,67 @@
+.clipSection {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #343a40;
+  border-radius: 22px;
+  background: #212529;
+  color: #f8f9fa;
+  margin-bottom: 2px;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #212529;
+  object-fit: contain;
+}
+
+.clipStatus {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.clipStatus h2 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.clipStatus p {
+  max-width: 310px;
+  color: #dee2e6;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.clipCaption {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #495057;
+  background: #343a40;
+  color: #f8f9fa;
+  padding: 10px 16px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.clipCaption span:last-child {
+  color: #dee2e6;
+  text-align: right;
+}
+
+@media (max-width: 374px) {
+  .clipStatus {
+    min-height: 176px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+}

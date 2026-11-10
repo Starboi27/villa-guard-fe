@@ -1,0 +1,274 @@
+.appShell input,
+.appShell textarea,
+.appShell select {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.appShell input:not([type="radio"]):not([type="checkbox"]),
+.appShell textarea,
+.appShell select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.appShell input::placeholder,
+.appShell textarea::placeholder {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.appShell textarea {
+  display: block;
+  resize: vertical;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.appShell input[type="checkbox"],
+.appShell input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  accent-color: var(--foreground);
+  flex-shrink: 0;
+}
+
+.appShell {
+  max-width: 430px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 64px rgb(33 37 41 / 6%);
+  overflow-wrap: anywhere;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  padding: 0;
+}
+
+.brandLogo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.page {
+  padding: 28px 20px 20px;
+  flex: 1;
+}
+
+.pageTitle {
+  font-size: 24px;
+  line-height: 1.4;
+  letter-spacing: -0.7px;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-weight: 650;
+  font-size: 13px;
+  letter-spacing: 0.1px;
+  margin-bottom: 8px;
+}
+
+.pageDescription {
+  margin: 12px 0 24px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.buttonRow {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.appFooter {
+  color: var(--muted);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badgeDanger {
+  background: #343a40;
+  color: #f8f9fa;
+}
+
+.badgeCaution {
+  background: #e9ecef;
+  color: #212529;
+  border: 1px solid #ced4da;
+}
+
+.statusPanel {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+  text-align: center;
+  padding: 36px 20px;
+}
+
+.statusPanel p {
+  color: var(--muted);
+  margin: 12px 0 20px;
+  font-size: 14px;
+}
+
+.statusPanel h2 {
+  margin-top: 16px;
+}
+
+.backLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 5px;
+
+  min-height: 25px;
+  padding: 5px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 999px;
+
+  background: #f8f9fa;
+  color: #343a40;
+  font-size: 12px;
+  font-weight: 600;
+
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+}
+
+.backLink::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto;
+  height: 100%;
+  min-height: 44px;
+  transform: translateY(-50%);
+}
+
+.backLink:hover {
+  background: #dee2e6;
+  border-color: #adb5bd;
+}
+
+.backLink:active {
+  background: #ced4da;
+}
+
+.surface {
+  padding: 20px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.information {
+  margin: 16px 0 0;
+  display: grid;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.information > div {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.information dt {
+  color: var(--muted);
+}
+
+.information dd {
+  margin: 0;
+  text-align: right;
+  line-height: 1.6;
+}
+
+.help {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+.successMessage {
+  color: #212529;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.errorMessage {
+  color: #212529;
+  background: #dee2e6;
+  border-left: 3px solid #343a40;
+  font-size: 14px;
+  line-height: 1.7;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.preserveLines {
+  white-space: pre-wrap;
+}
+
+.notice {
+  padding: 14px;
+  border-radius: 10px;
+  background: #dee2e6;
+  color: #212529;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 16px 0;
+}
+
+@media (max-width: 374px) {
+  .page {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .surface {
+    padding: 16px;
+  }
+}

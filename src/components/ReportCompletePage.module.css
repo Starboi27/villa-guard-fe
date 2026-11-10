@@ -1,0 +1,155 @@
+.completePage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 36px;
+}
+
+.eyebrow {
+  align-self: flex-start;
+  padding: 6px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 999px;
+  background: #f8f9fa;
+  color: #343a40;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.5;
+}
+
+.pageTitle {
+  color: #212529;
+  font-size: 22px;
+  line-height: 1.45;
+  letter-spacing: -0.4px;
+}
+
+.pageDescription {
+  color: #495057;
+  font-size: 14px;
+  line-height: 1.65;
+  margin-bottom: 2px;
+}
+
+.completeCard {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 22px;
+  background: #f8f9fa;
+  color: #212529;
+  box-shadow: none;
+}
+
+.cardHeader {
+  padding: 20px 20px 16px;
+}
+
+.cardContent {
+  padding: 0 20px 20px;
+}
+
+.zoneName {
+  color: #212529;
+  font-size: 20px;
+}
+
+.information {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  font-size: 14px;
+}
+
+.information > div {
+  display: grid;
+  grid-template-columns: minmax(78px, 0.75fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
+.information dt {
+  color: #495057;
+}
+
+.information dd {
+  margin: 0;
+  color: #212529;
+  line-height: 1.55;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.lockNote {
+  border-radius: 16px;
+  background: #dee2e6;
+  color: #343a40;
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.completeActions {
+  display: grid;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.reviewSteps {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 22px;
+  background: #f8f9fa;
+  list-style: none;
+}
+
+.reviewSteps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #495057;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.stepNumber {
+  display: inline-flex;
+  flex: 0 0 28px;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e9ecef;
+  color: #495057;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.reviewSteps [aria-current="step"] {
+  color: #212529;
+  font-weight: 700;
+}
+
+.reviewSteps [aria-current="step"] .stepNumber {
+  background: #212529;
+  color: #f8f9fa;
+}
+
+@media (max-width: 374px) {
+  .completePage {
+    padding-top: 24px;
+  }
+
+  .cardHeader {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .cardContent {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+}

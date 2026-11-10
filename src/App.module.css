@@ -1,0 +1,30 @@
+.appHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+  min-height: 76px;
+  padding: 16px 20px;
+  border-bottom: 1px solid #dee2e6;
+  background: #f8f9fa;
+}
+
+.demoBanner {
+  background: #f8f9fa;
+  padding: 10px 20px 12px;
+  border-bottom: 1px solid #ced4da;
+  color: #495057;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.skipLink {
+  position: absolute;
+  top: -80px;
+  background: #f8f9fa;
+  padding: 12px;
+  z-index: 10;
+}
+.skipLink:focus {
+  top: 0;
+}

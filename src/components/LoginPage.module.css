@@ -1,0 +1,249 @@
+.loginShell {
+  background: var(--card);
+}
+
+.loginBrand {
+  min-height: 76px;
+  padding: 24px 24px 0;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.loginPage {
+  width: 100%;
+  flex: 1;
+  padding: 20px 30px;
+}
+
+.pageTitle {
+  font-size: 500px;
+}
+
+.loginCard {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.formHeading {
+  margin-bottom: 25px;
+}
+
+.formHeading h1 {
+  color: var(--foreground);
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.4;
+  letter-spacing: -1.2px;
+  text-wrap: balance;
+  margin-bottom: 12px;
+}
+
+.formHeading p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.field + .field {
+  margin-top: 20px;
+}
+
+.eventNotice {
+  margin-bottom: 20px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 14px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.loginShell .loginForm input:not([type="radio"]):not([type="checkbox"]) {
+  height: 52px;
+  padding: 14px 16px;
+  border-color: var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  font-size: 16px;
+}
+
+.loginShell
+  .loginForm
+  input:not([type="radio"]):not([type="checkbox"]):focus-visible {
+  border-color: var(--foreground);
+  outline: 2px solid var(--foreground);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.passwordField {
+  position: relative;
+}
+
+.loginShell .loginForm .passwordField input[type] {
+  padding-right: 72px;
+}
+
+.passwordField .passwordToggle {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 60px;
+  min-height: 44px;
+  padding: 8px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.passwordHelp {
+  margin-top: 8px;
+}
+
+.passwordHelp summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: fit-content;
+  min-height: 44px;
+  margin-left: auto;
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 13px;
+  list-style: none;
+}
+
+.passwordHelp summary::-webkit-details-marker {
+  display: none;
+}
+
+.passwordHelp summary:hover,
+.passwordHelp[open] summary {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.passwordHelp p {
+  margin: 4px 0 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--muted);
+  background: var(--background);
+  font-size: 13px;
+  line-height: 1.7;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.loginForm .signInButton {
+  min-height: 52px;
+  margin-top: 12px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.demoEntry {
+  margin-top: 32px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--border);
+}
+
+.demoEntry .demoButton {
+  min-height: 48px;
+  border-color: transparent;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.demoEntry p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.loginHelp {
+  margin-top: 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  text-align: center;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.loginHelp span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.sessionStatus {
+  padding: 4px 0 24px;
+}
+
+.sessionStatus > button {
+  margin-top: 12px;
+}
+
+.loginFooter {
+  margin: 0 24px 24px;
+}
+
+@media (max-width: 374px) {
+  .loginBrand {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .loginPage {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .formHeading h1 {
+    font-size: 28px;
+  }
+}

@@ -1,0 +1,17 @@
+.levelBadge.caution {
+  border-color: #f4d576;
+  background: #fff7d6;
+  color: #805500;
+}
+
+.levelBadge.suspect {
+  border-color: #f3b7b1;
+  background: #fef0ee;
+  color: #a5221b;
+}
+
+.levelBadge.unknown {
+  border-color: var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+}

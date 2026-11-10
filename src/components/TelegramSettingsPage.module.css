@@ -1,0 +1,267 @@
+.backLink {
+  margin-bottom: 20px;
+}
+.pageHeading {
+  margin-bottom: 24px;
+}
+.pageHeading p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+.connectionCard,
+.accountCard {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--card);
+}
+.connectionCard {
+  padding: 20px;
+}
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.telegramIcon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: #e5f2f8;
+  color: #2585ae;
+}
+.telegramIcon svg {
+  width: 22px;
+  height: 22px;
+}
+.cardHeading {
+  flex: 1;
+  min-width: 0;
+}
+.cardEyebrow {
+  display: block;
+  margin-bottom: 2px;
+  color: #6c757d;
+  font-size: 11px;
+  font-weight: 600;
+}
+.cardHeading h2 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #e9ecef;
+  color: #495057;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #868e96;
+}
+.LINKED {
+  background: #e3f3eb;
+  color: #276b4d;
+}
+.LINKED .statusDot {
+  background: #388e66;
+}
+.PENDING {
+  background: #e5f2f8;
+  color: #236c8b;
+}
+.PENDING .statusDot {
+  background: #2585ae;
+}
+.EXPIRED {
+  background: #f7eee5;
+  color: #85562f;
+}
+.EXPIRED .statusDot {
+  background: #b07840;
+}
+.message {
+  margin-top: 24px;
+}
+.message h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.45px;
+  word-break: keep-all;
+}
+.message p,
+.description {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+.steps {
+  display: grid;
+  gap: 11px;
+  margin: 20px 0 0;
+  padding: 15px;
+  border-radius: 13px;
+  background: #eef1f3;
+  list-style: none;
+}
+.steps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #495057;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.steps li span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #f8f9fa;
+  color: #343a40;
+  font-size: 11px;
+  font-weight: 750;
+}
+.expiry,
+.linkHelp {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.expiry {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #eef1f3;
+  font-weight: 600;
+}
+.actions {
+  display: grid;
+  gap: 8px;
+  margin-top: 22px;
+}
+.connectionCard .secondaryAction {
+  border: 1px solid var(--border);
+  font-size: 14px;
+}
+.connectionCard .secondaryAction:hover:not(:focus):not(:active):not(:disabled) {
+  background: transparent;
+}
+.connectionCard .secondaryAction:is(:focus, :active):not(:disabled) {
+  border-color: #212529;
+  background: #212529;
+  color: #f8f9fa;
+}
+.refreshAction {
+  margin-top: 8px;
+}
+.error {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f2eae7;
+  color: #713f35;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.error button {
+  min-height: 44px;
+  margin-top: 4px;
+}
+.accountCard {
+  margin-top: 14px;
+  padding: 20px;
+}
+.accountHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.accountHeading h2 {
+  margin: 0;
+  font-size: 15px;
+}
+.accountIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  color: #495057;
+  background: #e9ecef;
+}
+.accountInfo {
+  margin: 15px 0 0;
+  font-size: 13px;
+}
+.accountInfo > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+}
+.accountInfo > div + div {
+  border-top: 1px solid #e9ecef;
+}
+.accountInfo dt {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.accountInfo dd {
+  margin: 0;
+  color: var(--foreground);
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.note {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: #6c757d;
+}
+.noteIcon {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.note p {
+  font-size: 12px;
+  line-height: 1.75;
+  word-break: keep-all;
+}
+@media (max-width: 374px) {
+  .connectionCard,
+  .accountCard {
+    padding: 16px;
+  }
+  .cardHeader {
+    gap: 9px;
+  }
+  .status {
+    padding: 6px 7px;
+  }
+}

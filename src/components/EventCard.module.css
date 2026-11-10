@@ -1,0 +1,142 @@
+.eventCard {
+  display: block;
+  gap: 0;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 22px;
+  background: #f8f9fa;
+  color: #212529;
+  box-shadow: none;
+}
+
+.eventUnread {
+  border-color: #6c757d;
+  box-shadow: inset 3px 0 0 #343a40;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 16px;
+}
+
+.eventAction {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--secondary);
+  color: var(--foreground);
+}
+
+.actionIcon { display: grid; flex: 0 0 34px; place-items: center; height: 34px; border-radius: 10px; background: var(--card); color: var(--foreground); }
+.actionInfo { display: grid; min-width: 0; gap: 2px; }
+.actionInfo strong { font-size: 14px; line-height: 1.45; overflow-wrap: anywhere; }
+.actionLabel {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.eventLocation {
+  margin-bottom: 6px;
+  color: #212529;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.eventTime {
+  display: block;
+  color: #495057;
+  font-size: 13px;
+}
+
+.eventStates {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 14px 0;
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.eventStates > div {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 5px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.eventStates dt {
+  color: #495057;
+}
+
+.eventStates dd {
+  margin: 0;
+  color: #212529;
+  font-weight: 600;
+}
+
+.unreadState::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #212529;
+  vertical-align: middle;
+}
+
+.responseSummary,
+.verdictSummary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 8px;
+  margin-top: 10px;
+  color: #343a40;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.responseSummary strong,
+.verdictSummary strong {
+  color: #495057;
+  font-weight: 600;
+}
+
+.cardLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 16px;
+  padding: 10px 12px;
+  border-color: transparent;
+  background: #e9ecef;
+  color: #212529;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cardLink:hover {
+  background: #dee2e6;
+}
+
+@media (max-width: 374px) {
+  .eventCard {
+    padding: 18px;
+  }
+
+}

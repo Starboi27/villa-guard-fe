@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #e9ecef;
+  --foreground: #212529;
+  --card: #f8f9fa;
+  --card-foreground: #212529;
+  --popover: #f8f9fa;
+  --popover-foreground: #212529;
+  --primary: #212529;
+  --primary-foreground: #f8f9fa;
+  --secondary: #e9ecef;
+  --secondary-foreground: #212529;
+  --muted-surface: #dee2e6;
+  --muted: #495057;
+  --accent: #dee2e6;
+  --accent-foreground: #212529;
+  --destructive: #343a40;
+  --border: #ced4da;
+  --input: #ced4da;
+  --ring: #212529;
+  --radius: 0.75rem;
+
+  --gray-50: #f8f9fa;
+  --gray-100: #e9ecef;
+  --gray-200: #dee2e6;
+  --gray-300: #ced4da;
+  --gray-400: #adb5bd;
+  --gray-500: #6c757d;
+  --gray-600: #495057;
+  --gray-700: #343a40;
+  --gray-800: #212529;
+
+  --brand: var(--gray-800);
+}
