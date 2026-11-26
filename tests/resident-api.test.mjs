@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { ApiError, getToken, request, setToken, tokenKey } from '../src/api/client.js';
-import { isApiAvailable, login } from '../src/api/auth.js';
+import { canUseDemo, isApiAvailable, login } from '../src/api/auth.js';
 import { getEvents, getEvent, saveResponse, submitReport } from '../src/api/events.js';
 import { kstDayStart } from '../src/lib/dateFilters.js';
 
@@ -129,6 +129,14 @@ test('API availability detects an offline proxy and a frontend fallback page', a
   assert.equal(await isApiAvailable(), false);
   globalThis.fetch = async () => new Response('<html>SPA fallback</html>', { status: 200 });
   assert.equal(await isApiAvailable(), false);
+});
+
+test('without Vite configuration, mock login is available only while the API is offline', async () => {
+  globalThis.fetch = async () => new Response('Not Found', { status: 404 });
+  assert.equal(await canUseDemo(), true);
+  globalThis.fetch = async () => Response.json({ status: 'UP' });
+  assert.equal(await canUseDemo(), false);
+  assert.equal(getToken(), null);
 });
 
 test('protected 401 clears authentication and notifies the UI', async () => {
