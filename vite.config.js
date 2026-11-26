@@ -31,19 +31,24 @@ const tailwindConfig = {
 }
 
 // https://vite.dev/config/
-export default defineConfig(({ mode }) => ({
-  plugins: [react()],
-  css: {
-    postcss: {
-      plugins: [tailwindcss(tailwindConfig)],
-    },
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: loadEnv(mode, '.', '').API_PROXY_TARGET || 'http://localhost:8080',
-        changeOrigin: true,
+export default defineConfig(({ mode }) => {
+  const backendProxy = {
+    target: loadEnv(mode, '.', '').API_PROXY_TARGET || 'http://localhost:8080',
+    changeOrigin: true,
+  }
+
+  return {
+    plugins: [react()],
+    css: {
+      postcss: {
+        plugins: [tailwindcss(tailwindConfig)],
       },
     },
-  },
-}))
+    server: {
+      proxy: {
+        '/api': backendProxy,
+        '^/health(?:\\?|$)': backendProxy,
+      },
+    },
+  }
+})

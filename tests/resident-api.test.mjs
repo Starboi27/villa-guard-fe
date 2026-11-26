@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, test } from 'node:test';
 import assert from 'node:assert/strict';
 import { ApiError, getToken, request, setToken, tokenKey } from '../src/api/client.js';
-import { login } from '../src/api/auth.js';
+import { isApiAvailable, login } from '../src/api/auth.js';
 import { getEvents, getEvent, saveResponse, submitReport } from '../src/api/events.js';
 import { kstDayStart } from '../src/lib/dateFilters.js';
 
@@ -109,6 +109,26 @@ test('login sends the contract fields without a previous Bearer token', async ()
     return Response.json({ access_token: 'new-token', user: { role: 'RESIDENT' } });
   };
   assert.equal((await login('resident201', 'password')).access_token, 'new-token');
+});
+
+test('API availability requires an uncached public health response from the backend', async () => {
+  setToken('existing-token');
+  globalThis.fetch = async (path, options) => {
+    assert.equal(path, '/health');
+    assert.equal(options.method, 'GET');
+    assert.equal(options.cache, 'no-store');
+    assert.equal(options.headers.Authorization, undefined);
+    return Response.json({ status: 'UP' });
+  };
+  assert.equal(await isApiAvailable(), true);
+  assert.equal(getToken(), 'existing-token');
+});
+
+test('API availability detects an offline proxy and a frontend fallback page', async () => {
+  globalThis.fetch = async () => new Response('proxy offline', { status: 502 });
+  assert.equal(await isApiAvailable(), false);
+  globalThis.fetch = async () => new Response('<html>SPA fallback</html>', { status: 200 });
+  assert.equal(await isApiAvailable(), false);
 });
 
 test('protected 401 clears authentication and notifies the UI', async () => {

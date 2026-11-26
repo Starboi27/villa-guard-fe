@@ -19,13 +19,13 @@ npm ci
 npm run dev
 ```
 
-개발 서버 주소에서 `예시 데이터로 둘러보기`를 누르면 서버 없이 흐름을 확인할 수 있습니다. 데모는 화면에 항상 표시되며 데이터는 현재 브라우저 탭의 `sessionStorage`에만 저장됩니다. 실제 신고·알림은 전송하지 않습니다. 실제 로그인 실패나 API 오류가 데모 모드로 자동 전환되지 않습니다.
+개발 환경에서 `/health`가 정상 응답하면 실제 주민 계정으로 로그인합니다. 연결을 확인할 수 없으면 로그인 제출 또는 `예시 데이터로 둘러보기`로 예시 세션을 시작할 수 있습니다. 실제 로그인 요청을 보낸 뒤 발생한 인증·서버 오류는 화면에 표시합니다. 예시 세션에서 새로고침할 때 서버가 정상 응답하면 주민 계정 로그인 화면으로 돌아갑니다. `VITE_ENABLE_DEMO=false`를 설정하면 개발 환경에서도 예시 로그인을 끌 수 있습니다. 배포 빌드에서는 기본적으로 실제 로그인만 사용하며, `VITE_ENABLE_DEMO=true`로 예시 로그인을 허용할 수 있습니다. 예시 데이터는 현재 탭에만 저장되며 실제 신고·알림을 전송하지 않습니다.
 
-실제 서버를 사용할 때는 `.env.example`을 `.env.local`로 복사하고 `API_PROXY_TARGET`을 설정합니다. 기본값은 `http://localhost:8080`입니다. 개발 서버가 `/api` 요청을 전달합니다. API 준비 상태는 저장소 코드와 확인해야 하며, 명세를 따른 호출 코드를 작성한 것이 서버 연동 검증 완료를 뜻하지 않습니다.
+실제 서버를 사용할 때는 `.env.example`을 `.env.local`로 복사하고 `API_PROXY_TARGET`을 설정합니다. 기본값은 `http://localhost:8080`입니다. 개발 서버가 `/api` 및 `/health` 요청을 전달합니다.
 
 배포 시 `/api`를 백엔드로 전달하고 나머지 화면 경로를 `index.html`로 연결해야 합니다. 별도 API origin을 쓰려면 `VITE_API_BASE_URL`과 서버 CORS 설정이 필요합니다. 텔레그램 알림 경로 `/events/{event_id}`의 직접 접근·새로고침도 SPA fallback이 필요합니다. 운영자 연락처가 확정되면 `VITE_OPERATOR_PHONE`을 지정합니다.
 
-실제 통합 배포는 `docs/deploy.md`의 EC2 nginx 구성을 따릅니다. `VITE_API_BASE_URL`을 비워 두면 같은 출처의 `/api`를 사용하므로 별도 CORS 설정이 필요 없습니다. nginx의 `try_files`로 이벤트 주소 직접 접근·새로고침도 `index.html`에 연결합니다. Vercel 배포는 ‘예시 데이터로 둘러보기’를 통한 데모 확인용이며 HTTP 백엔드와의 실제 통합 배포로 사용하지 않습니다.
+실제 통합 배포는 `docs/deploy.md`의 EC2 nginx 구성을 따릅니다. `VITE_API_BASE_URL`을 비워 두면 같은 출처의 `/api`를 사용하므로 별도 CORS 설정이 필요 없습니다. nginx의 `try_files`로 이벤트 주소 직접 접근·새로고침도 `index.html`에 연결합니다. Vercel 데모 배포에는 `VITE_ENABLE_DEMO=true`를 설정하며 HTTP 백엔드와의 실제 통합 배포로 사용하지 않습니다.
 
 ```bash
 npm run lint

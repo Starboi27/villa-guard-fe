@@ -1,7 +1,8 @@
 import common from "../common.module.css";
 import styles from "./LoginPage.module.css";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router";
+import { canUseDemo } from "../api/auth.js";
 import { useSession } from "../hooks/useSession.js";
 import { eventDetailPath } from "../lib/eventLinks.js";
 import { Button } from "./Button.jsx";
@@ -27,12 +28,25 @@ export const LoginPage = () => {
   const [error, setError] = useState(null);
   const [busy, setBusy] = useState(false);
   const [busyAction, setBusyAction] = useState(null);
+  const [demoAvailable, setDemoAvailable] = useState(false);
   const locked = useRef(false);
   const returnTo =
     eventDetailPath(location.state?.returnTo) ||
     (location.state?.returnTo === "/settings/telegram"
       ? "/settings/telegram"
       : "/events");
+
+  useEffect(() => {
+    if (user || loading || sessionError) return;
+    const controller = new AbortController();
+    canUseDemo(controller.signal).then(
+      (available) => {
+        if (!controller.signal.aborted) setDemoAvailable(available);
+      },
+      () => {},
+    );
+    return () => controller.abort();
+  }, [user, loading, sessionError]);
 
   if (user) return <Navigate to={returnTo} replace />;
 
@@ -59,7 +73,11 @@ export const LoginPage = () => {
     await runAction(() => signIn(loginId.trim(), password), "login");
   };
 
-  const enterDemo = () => runAction(startDemo, "demo");
+  const enterDemo = () => runAction(async () => {
+    if (await startDemo()) return;
+    setDemoAvailable(false);
+    throw new Error("서버가 연결됐어요. 주민 계정으로 로그인해 주세요.");
+  }, "demo");
 
   return (
     <div className={`${common.appShell} ${styles.loginShell}`}>
@@ -183,22 +201,24 @@ export const LoginPage = () => {
                 </fieldset>
               </form>
             </Card>
-            <div className={styles.demoEntry}>
-              <div className={styles.divider} aria-hidden="true">
-                또는
+            {demoAvailable && (
+              <div className={styles.demoEntry}>
+                <div className={styles.divider} aria-hidden="true">
+                  또는
+                </div>
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className={styles.demoButton}
+                  onClick={enterDemo}
+                  disabled={busy}
+                >
+                  {busyAction === "demo"
+                    ? "예시 데이터를 여는 중…"
+                    : "예시 데이터로 둘러보기"}
+                </Button>
               </div>
-              <Button
-                type="button"
-                variant="secondary"
-                className={styles.demoButton}
-                onClick={enterDemo}
-                disabled={busy}
-              >
-                {busyAction === "demo"
-                  ? "예시 데이터를 여는 중…"
-                  : "예시 데이터로 둘러보기"}
-              </Button>
-            </div>
+            )}
             <p id="login-help" className={styles.loginHelp}>
               <span>계정이 없으신가요?</span>
               계정 발급은 관리자에게 문의해 주세요.

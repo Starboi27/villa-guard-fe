@@ -31,12 +31,12 @@ export class ApiError extends Error {
   }
 }
 
-export const request = async (path, { body, method = 'GET', signal, publicRequest = false } = {}) => {
+export const request = async (path, { body, cache, method = 'GET', signal, publicRequest = false } = {}) => {
   const token = getToken();
   let response;
   try {
     response = await fetch(`${import.meta.env?.VITE_API_BASE_URL || ''}${path}`, {
-      method, signal,
+      method, signal, cache,
       headers: {
         Accept: 'application/json',
         ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),

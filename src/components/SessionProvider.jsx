@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getMe, login } from '../api/auth.js';
+import { canUseDemo, getMe, login } from '../api/auth.js';
 import { getToken, isDemo, setToken } from '../api/client.js';
 import { SessionContext } from '../SessionContext.js';
 
@@ -12,8 +12,17 @@ export const SessionProvider = ({ children }) => {
   useEffect(() => {
     const controller = new AbortController();
     const token = getToken();
-    if (token) getMe(controller.signal).then(
-      (data) => { if (!controller.signal.aborted && getToken() === token) { setUser(data); setLoading(false); } },
+    const restoreSession = async () => {
+      if (isDemo() && !(await canUseDemo(controller.signal))) return null;
+      if (!controller.signal.aborted && getToken() === token) return getMe(controller.signal);
+    };
+    if (token) restoreSession().then(
+      (data) => {
+        if (controller.signal.aborted || getToken() !== token) return;
+        if (!data) setToken(null);
+        setUser(data);
+        setLoading(false);
+      },
       (err) => { if (!controller.signal.aborted && getToken() === token) { setError(err); setLoading(false); } },
     );
     const expire = () => { setUser(null); setError(null); setLoading(false); };
@@ -24,7 +33,14 @@ export const SessionProvider = ({ children }) => {
     };
   }, [revision]);
 
+  const openDemoSession = async () => {
+    setToken('demo-resident');
+    setUser(await getMe());
+    setError(null);
+  };
+
   const signIn = async (loginId, password) => {
+    if (await canUseDemo()) return openDemoSession();
     const result = await login(loginId, password);
     if (result.user.role !== 'RESIDENT') throw new Error('주민용 계정으로 로그인해 주세요. 운영자 계정은 운영자 웹을 이용해 주세요.');
     setToken(result.access_token);
@@ -37,9 +53,9 @@ export const SessionProvider = ({ children }) => {
   };
   const signOut = () => { setToken(null); setUser(null); setError(null); setLoading(false); };
   const startDemo = async () => {
-    setToken('demo-resident');
-    setUser(await getMe());
-    setError(null);
+    if (!(await canUseDemo())) return false;
+    await openDemoSession();
+    return true;
   };
   const retry = () => { setError(null); setLoading(true); setRevision((value) => value + 1); };
 
